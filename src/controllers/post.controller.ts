@@ -1,13 +1,13 @@
 import { PostSchema, PostResponseSchema, GetResponseSchema } from "../schemas/PostSchema";
 
-export const createPost = ({body} : {body: typeof PostSchema._type}) : typeof PostResponseSchema._type => {
+export const createPost = async ({ body }: { body: typeof PostSchema._type }): Promise<typeof PostResponseSchema._type> => {
     return {
         status: 200,
         body
     }
 }
 
-export const getPosts = () : typeof GetResponseSchema._type => {
+export const getPosts = async (): Promise<typeof GetResponseSchema._type> => {
     const body: typeof PostSchema._type[] = [
         {
             id: '1',
@@ -24,8 +24,8 @@ export const getPosts = () : typeof GetResponseSchema._type => {
             title: 'title 3',
             body: 'hi 3'
         },
-]
-    
+    ]
+
     return {
         status: 200,
         body

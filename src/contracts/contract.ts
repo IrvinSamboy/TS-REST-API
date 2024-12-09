@@ -10,7 +10,7 @@ export const contract = c.router({
         responses: {
             200: PostSchema,
         },
-        body: PostSchema.omit({id: true}),
+        body: PostSchema,
         summary: 'Create post'
     },
     getPosts: {
