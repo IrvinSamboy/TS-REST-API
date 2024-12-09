@@ -4,6 +4,8 @@ import dotenv from 'dotenv'
 import { createExpressEndpoints } from '@ts-rest/express'
 import { contract } from './contracts/contract'
 import { postRouter } from './router/post.routes'
+import swaggerUi from 'swagger-ui-express';
+import { openApiDocument } from './docs/apidoc'
 
 dotenv.config()
 
@@ -13,6 +15,7 @@ const app = express()
 
 app.use(cors())
 app.use(express.json())
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openApiDocument));
 
 createExpressEndpoints(contract, postRouter, app)
 
